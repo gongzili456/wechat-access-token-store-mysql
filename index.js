@@ -33,8 +33,9 @@ module.exports = class MysqlStore {
     const that = this
     return new Promise(function(resolve, reject) {
       that.connection.execute(
-        `INSERT INTO ${that.table} (key, value) VALUES (?, ?)
-  ON DUPLICATE KEY UPDATE key = ?`,
+        `INSERT INTO ${
+          that.table
+        }(key, value) VALUES(?, ?) ON DUPLICATE KEY UPDATE key = ?`,
         [key, value, key],
         function(err, rows, fields) {
           if (err) return reject(err)
