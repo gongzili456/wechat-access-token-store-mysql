@@ -35,8 +35,8 @@ module.exports = class MysqlStore {
       that.connection.execute(
         `INSERT INTO ${
           that.table
-        }(key, value) VALUES(?, ?) ON DUPLICATE KEY UPDATE key = ?`,
-        [key, value, key],
+        }(key, value) VALUES(?, ?) ON DUPLICATE KEY UPDATE value = ?`,
+        [key, value, value],
         function(err, rows, fields) {
           if (err) return reject(err)
           return resolve()
