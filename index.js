@@ -9,7 +9,6 @@ const defaultDbConfig = {
 
 module.exports = class MysqlStore {
   constructor(opts) {
-    console.log('opts: ', opts)
     opts = opts || defaultDbConfig
     this.table = opts.table
 
