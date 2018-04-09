@@ -1,6 +1,6 @@
 {
   "name": "wechat-access-token-store-mysql",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "main": "index.js",
   "license": "MIT",
   "scripts": {},
@@ -8,17 +8,9 @@
     "type": "git",
     "url": "git@github.com:gongzili456/wechat-access-token.git"
   },
-  "keyword": [
-    "wechat",
-    "access token"
-  ],
+  "keyword": ["wechat", "access token"],
   "author": "LiuGuili <gongzili456@gmail.com> (http://geeekr.com)",
-  "keywords": [
-    "wechat",
-    "wx",
-    "access-token",
-    "store"
-  ],
+  "keywords": ["wechat", "wx", "access-token", "store"],
   "dependencies": {
     "mysql2": "^1.5.3"
   }

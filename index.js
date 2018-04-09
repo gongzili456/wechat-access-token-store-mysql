@@ -7,24 +7,29 @@ const defaultDbConfig = {
   table: '_wechat_access_token_store_',
 }
 
-const pool = mysql.createPool(
-  Object.assign(
-    {
-      poolLimit: 10,
-    },
-    opts,
-  ),
-)
-
 module.exports = class MysqlStore {
   constructor(opts) {
     opts = opts || defaultDbConfig
     this.table = opts.table
 
-    this.pool = pool
+    this.pool = mysql.createPool(
+      Object.assign(
+        {
+          poolLimit: 10,
+        },
+        opts,
+      ),
+    )
   }
 
+  // getConnection() {
+  //   if (this.pool) {
+
+  //   }
+  // }
+
   load(key) {
+    console.log('connection pool: ', this.pool)
     const that = this
     return new Promise(function(resolve, reject) {
       that.pool.getConnection(function(err, connection) {
@@ -41,6 +46,8 @@ module.exports = class MysqlStore {
     })
   }
   save(key, value) {
+    console.log('connection pool: ', this.pool)
+
     const that = this
     return new Promise(function(resolve, reject) {
       that.pool.getConnection(function(err, connection) {
