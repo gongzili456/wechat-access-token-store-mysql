@@ -1,4 +1,4 @@
-const mysql = require('mysql2')
+const mysql = require('mysql')
 
 const defaultDbConfig = {
   host: 'localhost',
@@ -29,7 +29,7 @@ module.exports = class MysqlStore {
   // }
 
   load(key) {
-    console.log('connection pool: ', this.pool)
+    // console.log('connection pool: ', this.pool)
     const that = this
     return new Promise(function(resolve, reject) {
       that.pool.getConnection(function(err, connection) {
@@ -46,7 +46,7 @@ module.exports = class MysqlStore {
     })
   }
   save(key, value) {
-    console.log('connection pool: ', this.pool)
+    // console.log('connection pool: ', this.pool)
 
     const that = this
     return new Promise(function(resolve, reject) {
