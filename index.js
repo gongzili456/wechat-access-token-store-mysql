@@ -34,7 +34,7 @@ module.exports = class MysqlStore {
     return new Promise(function(resolve, reject) {
       that.pool.getConnection(function(err, connection) {
         if (err) return reject(err)
-        connection.execute(
+        connection.query(
           `SELECT * FROM \`${that.table}\` WHERE \`key\` = ?`,
           [key],
           function(err, rows, fields) {
@@ -52,7 +52,7 @@ module.exports = class MysqlStore {
     return new Promise(function(resolve, reject) {
       that.pool.getConnection(function(err, connection) {
         if (err) return reject(err)
-        connection.execute(
+        connection.query(
           `INSERT INTO \`${
             that.table
           }\` (\`key\`, \`value\`) VALUES(?, ?) ON DUPLICATE KEY UPDATE value = ?`,
