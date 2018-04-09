@@ -7,19 +7,21 @@ const defaultDbConfig = {
   table: '_wechat_access_token_store_',
 }
 
+const pool = mysql.createPool(
+  Object.assign(
+    {
+      poolLimit: 10,
+    },
+    opts,
+  ),
+)
+
 module.exports = class MysqlStore {
   constructor(opts) {
     opts = opts || defaultDbConfig
     this.table = opts.table
 
-    this.pool = mysql.createPool(
-      Object.assign(
-        {
-          poolLimit: 10,
-        },
-        opts,
-      ),
-    )
+    this.pool = pool
   }
 
   load(key) {
